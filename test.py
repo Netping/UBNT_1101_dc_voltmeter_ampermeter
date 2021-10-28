@@ -7,7 +7,10 @@ from relays import *
 
 PORT = '/dev/dkst1101/COM19'
 MODBUS_ADDRESS = 8
-REGISTER_1 = 100
+VOLT_1 = 0x2
+VOLT_2 = 0x3
+AMP_1 = 0x8
+AMP_2 = 0x9
 
 instrument = minimalmodbus.Instrument(PORT, MODBUS_ADDRESS, mode=minimalmodbus.MODE_RTU)
 
@@ -552,6 +555,16 @@ V_IN10 = group.configure("V_IN10", conf_dict_v_in_10)
 
 V_IN1('V_IN1')
 
-#TODO read from modbus
+#read from modbus
+voltage_1 = instrument.read_register(registeraddress=VOLT_1, functioncode=4, signed=True)
+voltage_2 = instrument.read_register(registeraddress=VOLT_2, functioncode=4, signed=True)
+
+amperage_1 = instrument.read_register(registeraddress=AMP_1, functioncode=4, signed=True)
+amperage_2 = instrument.read_register(registeraddress=AMP_2, functioncode=4, signed=True)
+
+print("Volt 1: " + voltage_1)
+print("Volt 2: " + voltage_2)
+print("Amp 1: " + amperage_1)
+print("Amp 2: " + amperage_2)
 
 connector.deinitConnection()

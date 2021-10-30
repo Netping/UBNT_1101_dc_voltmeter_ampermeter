@@ -4,7 +4,7 @@ PKG_NAME="UBNT_1101_DC_VOLTMETER_AMPERMETER"
 PKG_VERSION="1.1"
 PKG_RELEASE=1
 
-MODULE_FILES=
+MODULE_FILES=dc_va_settings.py dc_va.py
 MODULE_FILES_DIR=/usr/lib/python3.8/
 
 .PHONY: all install

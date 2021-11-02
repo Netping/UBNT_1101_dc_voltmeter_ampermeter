@@ -29,7 +29,7 @@ class DC_VA:
 
         self.__state = state
         self.__relay = self.__states[state]
-        self.__relay(state)
+        self.__relay('ON')
 
     def invertState(self):
         self.__relay(self.__state)
